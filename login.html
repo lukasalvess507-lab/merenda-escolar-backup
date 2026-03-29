@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login - S.C.A.E</title>
+
+<style>
+body{
+    font-family: Arial;
+    margin:0;
+    background: linear-gradient(135deg, #1e3a5f, #2a4d69);
+    color:white;
+    text-align:center;
+}
+
+.container{
+    background:white;
+    color:black;
+    padding:20px;
+    border-radius:12px;
+    max-width:350px;
+    margin:80px auto;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin:8px 0;
+    background:#1f4d2e;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>S.C.A.E</h1>
+<p>Login da Escola</p>
+
+<div class="container">
+
+<input type="text" id="escola" placeholder="Nome da escola">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="senha" placeholder="Senha">
+
+<button onclick="cadastrar()">Criar Conta</button>
+<button onclick="entrar()">Entrar</button>
+
+<p id="msg"></p>
+
+</div>
+
+<script>
+
+function cadastrar(){
+    let escola = document.getElementById("escola").value;
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
+
+    if(!escola || !email || !senha){
+        msg("Preencha tudo!");
+        return;
+    }
+
+    localStorage.setItem("escola", escola);
+    localStorage.setItem("email", email);
+    localStorage.setItem("senha", senha);
+
+    msg("Conta criada!");
+}
+
+function entrar(){
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
+
+    let emailSalvo = localStorage.getItem("email");
+    let senhaSalva = localStorage.getItem("senha");
+
+    if(email === emailSalvo && senha === senhaSalva){
+        window.location.href = "index.html";
+    } else {
+        msg("Login inválido!");
+    }
+}
+
+function msg(texto){
+    document.getElementById("msg").innerText = texto;
+}
+
+</script>
+
+</body>
+</html>
