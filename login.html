@@ -48,19 +48,21 @@ button{
 
 <body>
 
-<h1>S.C.A.E</h1>
-<p>Login da Escola</p>
-
 <div class="container">
 
-<input type="text" id="escola" placeholder="Nome da escola">
-<input type="email" id="email" placeholder="Email">
-<input type="password" id="senha" placeholder="Senha">
+    <img src="logo.png" class="logo">
 
-<button onclick="cadastrar()">Criar Conta</button>
-<button onclick="entrar()">Entrar</button>
+    <h1>S.C.A.E</h1>
+    <p class="subtitulo">Sistema de Controle de Almoço Escolar</p>
 
-<p id="msg"></p>
+    <input type="text" id="escola" placeholder="Nome da Escola">
+    <input type="email" id="email" placeholder="E-mail">
+    <input type="password" id="senha" placeholder="Senha">
+
+    <button onclick="entrar()">Entrar</button>
+    <button onclick="cadastrar()" class="secundario">Criar conta</button>
+
+    <p id="msg"></p>
 
 </div>
 
