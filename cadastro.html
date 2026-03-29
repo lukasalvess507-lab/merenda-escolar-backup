@@ -74,8 +74,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-let escolaId = "escola_antonio_barros";
-localStorage.setItem("escolaId", escolaId);
+let escolaId = localStorage.getItem("escola");
 
 window.salvar = async function(){
 
