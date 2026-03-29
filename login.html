@@ -108,16 +108,13 @@ function entrar(){
     const email = document.getElementById("email").value.trim();
     const senha = document.getElementById("senha").value.trim();
 
-    const usuarioSalvo = JSON.parse(localStorage.getItem("usuario"));
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    if(!usuarioSalvo){
-        msg("Nenhuma conta cadastrada!");
-        return;
-    }
+    let usuario = usuarios.find(u => u.email === email && u.senha === senha);
 
-    if(email === usuarioSalvo.email && senha === usuarioSalvo.senha){
-        localStorage.setItem("email", email);
-        localStorage.setItem("escola", usuarioSalvo.escola);
+    if(usuario){
+        localStorage.setItem("email", usuario.email);
+        localStorage.setItem("escola", usuario.escola);
 
         window.location.href = "index.html";
     } else {
