@@ -67,36 +67,47 @@ button{
 <script>
 
 function cadastrar(){
-    let escola = document.getElementById("escola").value;
-    let email = document.getElementById("email").value;
-    let senha = document.getElementById("senha").value;
+    const escola = document.getElementById("escola").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
 
     if(!escola || !email || !senha){
         msg("Preencha tudo!");
         return;
     }
 
-    localStorage.setItem("escola", escola);
-    localStorage.setItem("email", email);
-    localStorage.setItem("senha", senha);
+    const usuario = {
+        escola: escola,
+        email: email,
+        senha: senha
+    };
+
+    localStorage.setItem("usuario", JSON.stringify(usuario));
 
     msg("Conta criada!");
 }
 
 function entrar(){
-    let email = document.getElementById("email").value;
-    let senha = document.getElementById("senha").value;
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
 
-    let emailSalvo = localStorage.getItem("email");
-    let senhaSalva = localStorage.getItem("senha");
+    const usuarioSalvo = JSON.parse(localStorage.getItem("usuario"));
 
-    if(email === emailSalvo && senha === senhaSalva){
+    if(!usuarioSalvo){
+        msg("Nenhuma conta cadastrada!");
+        return;
+    }
+
+    if(email === usuarioSalvo.email && senha === usuarioSalvo.senha){
+        localStorage.setItem("email", email);
+        localStorage.setItem("escola", usuarioSalvo.escola);
+
         window.location.href = "index.html";
     } else {
         msg("Login inválido!");
     }
 }
-
+    
 function msg(texto){
     document.getElementById("msg").innerText = texto;
 }
