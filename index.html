@@ -109,13 +109,17 @@ button:hover{
 
 </div>
 
+
 <script>
+
+if(!localStorage.getItem("email")){
+    window.location.href = "login.html";
+}
 
 function ir(pagina){
     window.location.href = pagina;
 }
 
 </script>
-
 </body>
 </html>
