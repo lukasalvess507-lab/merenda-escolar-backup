@@ -20,8 +20,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const escolaId = "escola_antonio_barros";
-
+const escolaId = localStorage.getItem("escola");
+  
 let registros = [];
 let alunosMap = {};
 
