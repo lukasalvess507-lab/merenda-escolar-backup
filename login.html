@@ -73,7 +73,10 @@ button{
 <script>
 
 function cadastrar(){
-    const escola = document.getElementById("escola").value.trim();
+    const escola = document.getElementById("escola").value
+  .trim()
+  .toLowerCase()
+  .replace(/\s+/g, "_");
     const email = document.getElementById("email").value.trim();
     const senha = document.getElementById("senha").value.trim();
 
