@@ -90,7 +90,8 @@ button:hover{
 <body>
 
 <div class="topo">
-    <div class="escola" id="nomeEscola">Escola Antônio de Sousa Barros</div>
+    <div class="escola" id="nomeEscola">Escola</div>
+    <div class="sair" onclick="sair()">Sair</div>
 </div>
 
 <h1>S.C.A.E</h1>
@@ -112,7 +113,16 @@ button:hover{
 
 <script>
 
+
 if(!localStorage.getItem("email")){
+    window.location.href = "login.html";
+}
+
+function sair(){
+    localStorage.removeItem("email");
+    localStorage.removeItem("senha");
+    localStorage.removeItem("escola");
+
     window.location.href = "login.html";
 }
 
@@ -120,6 +130,11 @@ function ir(pagina){
     window.location.href = pagina;
 }
 
+  const escola = localStorage.getItem("escola");
+
+if(escola){
+    document.getElementById("nomeEscola").innerText = escola;
+}  
 </script>
 </body>
 </html>
