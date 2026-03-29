@@ -82,15 +82,26 @@ function cadastrar(){
         return;
     }
 
-    const usuario = {
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    let existe = usuarios.find(u => u.email === email);
+
+    if(existe){
+        msg("Já existe uma conta com esse e-mail!");
+        return;
+    }
+
+    const novoUsuario = {
         escola: escola,
         email: email,
         senha: senha
     };
 
-    localStorage.setItem("usuario", JSON.stringify(usuario));
+    usuarios.push(novoUsuario);
 
-    msg("Conta criada!");
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+    msg("Conta criada com sucesso!");
 }
 
 function entrar(){
