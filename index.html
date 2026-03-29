@@ -119,9 +119,7 @@ if(!localStorage.getItem("email")){
 }
 
 function sair(){
-    localStorage.removeItem("email");
-    localStorage.removeItem("senha");
-    localStorage.removeItem("escola");
+    localStorage.removeItem("email"); // só desloga
 
     window.location.href = "login.html";
 }
