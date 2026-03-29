@@ -65,6 +65,7 @@ button{
 
     <button onclick="entrar()">Entrar</button>
     <button onclick="cadastrar()" class="secundario">Criar conta</button>
+    <button onclick="resetar()">Esqueci a senha</button>
 
     <p id="msg"></p>
 
@@ -121,7 +122,7 @@ function entrar(){
 
         window.location.href = "index.html";
     } else {
-        msg("Login inválido!");
+        msg("Logi inválido!");
     }
 }
     
@@ -129,6 +130,14 @@ function msg(texto){
     document.getElementById("msg").innerText = texto;
 }
 
+  function resetar(){
+    if(confirm("Deseja resetar o acesso? Você poderá criar a conta novamente.")){
+        localStorage.clear();
+        alert("Acesso resetado. Agora crie a conta novamente.");
+        location.reload();
+    }
+}  
+    
 </script>
 
 </body>
